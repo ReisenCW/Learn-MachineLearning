@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+# learning-material-repo
+pytorch-deep-learning/
