@@ -11,3 +11,5 @@ wheels/
 
 # learning-material-repo
 pytorch-deep-learning/
+
+.vscode/
