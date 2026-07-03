@@ -13,3 +13,5 @@ wheels/
 pytorch-deep-learning/
 
 .vscode/
+
+data/
