@@ -15,3 +15,7 @@ pytorch-deep-learning/
 .vscode/
 
 data/
+
+helloworld.py
+models/
+model/
