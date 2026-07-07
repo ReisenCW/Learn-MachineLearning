@@ -7,7 +7,7 @@ import data_setup, engine, model_builder, utils
 import torchvision.transforms.v2 as T
 
 MODEL_DIR = Path("models")
-MODEL_NAME = "tiny_vgg.pth"
+MODEL_NAME = "tiny_vgg.pt"
 
 DATA_DIR = Path("../data/pizza_steak_sushi/")
 TRAIN_PATH = DATA_DIR / "train"
