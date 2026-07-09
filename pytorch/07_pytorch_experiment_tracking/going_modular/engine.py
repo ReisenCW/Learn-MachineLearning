@@ -5,6 +5,7 @@ import torch
 
 from tqdm.auto import tqdm
 from typing import Dict, List, Tuple
+from torch.utils.tensorboard import SummaryWriter
 
 def train_step(model: torch.nn.Module, 
                dataloader: torch.utils.data.DataLoader, 
@@ -16,6 +17,8 @@ def train_step(model: torch.nn.Module,
   Turns a target PyTorch model to training mode and then
   runs through all of the required training steps (forward
   pass, loss calculation, optimizer step).
+  
+  Uses tensorboard to track values.
 
   Args:
     model: A PyTorch model to be trained.
@@ -122,7 +125,8 @@ def train(model: torch.nn.Module,
           optimizer: torch.optim.Optimizer,
           loss_fn: torch.nn.Module,
           epochs: int,
-          device: torch.device | str) -> Dict[str, List]:
+          device: torch.device | str,
+          writer: SummaryWriter=SummaryWriter()) -> Dict[str, List]:
   """Trains and tests a PyTorch model.
 
   Passes a target PyTorch models through train_step() and test_step()
@@ -139,6 +143,7 @@ def train(model: torch.nn.Module,
     loss_fn: A PyTorch loss function to calculate loss on both datasets.
     epochs: An integer indicating how many epochs to train for.
     device: A target device to compute on (e.g. "cuda" or "cpu").
+    writer: A TensorBoard SummaryWriter to record the loss, acc and model architect
 
   Returns:
     A dictionary of training and testing loss as well as training and
@@ -160,7 +165,7 @@ def train(model: torch.nn.Module,
       "test_loss": [],
       "test_acc": []
   }
-
+  
   # Loop through training and testing steps for a number of epochs
   for epoch in tqdm(range(epochs)):
       train_loss, train_acc = train_step(model=model,
@@ -187,6 +192,19 @@ def train(model: torch.nn.Module,
       results["train_acc"].append(train_acc)
       results["test_loss"].append(test_loss)
       results["test_acc"].append(test_acc)
-
+      
+      writer.add_scalars(main_tag="Loss", tag_scalar_dict={
+        "train_loss": train_loss,
+        "test_loss": test_loss
+      }, global_step=epoch) # global_step即数据点的横轴
+    
+      writer.add_scalars(main_tag="Accuracy", tag_scalar_dict={
+        "train_acc": train_acc,
+        "test_acc": test_acc
+      }, global_step=epoch)
+      
+      # 记录模型的计算图(前向传播的过程), 理解模型结构
+      writer.add_graph(model=model, input_to_model=torch.randn((32, 3, 224, 224)).to(device))
+  writer.close()
   # Return the filled results at the end of the epochs
   return results

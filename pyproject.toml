@@ -18,6 +18,7 @@ dependencies = [
     "seaborn>=0.13.2",
     "tensorboard>=2.21.0",
     "torch>=2.12.0",
+    "torch-tb-profiler>=0.4.3",
     "torchinfo>=1.8.0",
     "torchmetrics>=1.9.0",
     "torchvision>=0.27.0",
@@ -36,4 +37,4 @@ torch = { index = "pytorch-cu126" }
 torchvision = { index = "pytorch-cu126" }
 
 [tool.pyright]
-extraPaths = [".", "pytorch/05_pytorch_going_modular", "pytorch/06_pytorch_transfer_learning", "pytorch/07_pytorch_experiment_tracking" ]
+extraPaths = [".", "pytorch/05_pytorch_going_modular", "pytorch/06_pytorch_transfer_learning", "pytorch/07_pytorch_experiment_tracking", "pytorch/07_pytorch_experiment_tracking/going_modular"]
