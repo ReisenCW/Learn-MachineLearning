@@ -16,6 +16,7 @@ dependencies = [
     "pandas>=3.0.3",
     "scikit-learn>=1.9.0",
     "seaborn>=0.13.2",
+    "tensorboard>=2.21.0",
     "torch>=2.12.0",
     "torchinfo>=1.8.0",
     "torchmetrics>=1.9.0",
@@ -35,4 +36,4 @@ torch = { index = "pytorch-cu126" }
 torchvision = { index = "pytorch-cu126" }
 
 [tool.pyright]
-extraPaths = [".", "pytorch/05_pytorch_going_modular", "pytorch/06_pytorch_transfer_learning"]
+extraPaths = [".", "pytorch/05_pytorch_going_modular", "pytorch/06_pytorch_transfer_learning", "pytorch/07_pytorch_experiment_tracking" ]
