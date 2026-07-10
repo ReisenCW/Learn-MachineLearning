@@ -13,7 +13,8 @@ def create_dataloaders(train_dir: str | Path,
                        test_dir: str | Path,
                        transform: T.Compose,
                        batch_size: int=32,
-                       num_workers: int=0):
+                       num_workers: int=0,
+                       train_transform: T.Compose | None = None):
     """Creates training and testing DataLoaders.
 
     Takes in a training directory and testing directory path and turns
@@ -38,8 +39,12 @@ def create_dataloaders(train_dir: str | Path,
                                 num_workers=4)
     """
 
+    # 如果传入了 train_transform，用它；否则 fallback 到 transform
+    if train_transform is None:
+        train_transform = transform
+
     # Use ImageFolder to create dataset(s)
-    train_data = ImageFolder(train_dir, transform=transform)
+    train_data = ImageFolder(train_dir, transform=train_transform)
     test_data = ImageFolder(test_dir, transform=transform)
 
     class_names = train_data.classes
