@@ -1283,11 +1283,15 @@ dependencies = [
     { name = "notebook" },
     { name = "numpy" },
     { name = "pandas" },
+    { name = "pyg-lib" },
     { name = "scikit-learn" },
     { name = "seaborn" },
     { name = "tensorboard" },
     { name = "tokenizers" },
     { name = "torch" },
+    { name = "torch-geometric" },
+    { name = "torch-scatter" },
+    { name = "torch-sparse" },
     { name = "torch-tb-profiler" },
     { name = "torchinfo" },
     { name = "torchmetrics" },
@@ -1307,11 +1311,15 @@ requires-dist = [
     { name = "notebook", specifier = ">=7.5.6" },
     { name = "numpy", specifier = ">=2.4.4" },
     { name = "pandas", specifier = ">=3.0.3" },
+    { name = "pyg-lib", specifier = ">=0.6.0", index = "https://data.pyg.org/whl/torch-2.12.0+cu126.html" },
     { name = "scikit-learn", specifier = ">=1.9.0" },
     { name = "seaborn", specifier = ">=0.13.2" },
     { name = "tensorboard", specifier = ">=2.21.0" },
     { name = "tokenizers", specifier = ">=0.23.3" },
     { name = "torch", specifier = ">=2.12.0", index = "https://download.pytorch.org/whl/cu126" },
+    { name = "torch-geometric", specifier = ">=2.8.1" },
+    { name = "torch-scatter", specifier = ">=2.1.2", index = "https://data.pyg.org/whl/torch-2.12.0+cu126.html" },
+    { name = "torch-sparse", specifier = ">=0.6.18", index = "https://data.pyg.org/whl/torch-2.12.0+cu126.html" },
     { name = "torch-tb-profiler", specifier = ">=0.4.3" },
     { name = "torchinfo", specifier = ">=1.8.0" },
     { name = "torchmetrics", specifier = ">=1.9.0" },
@@ -2232,6 +2240,16 @@ wheels = [
 ]
 
 [[package]]
+name = "pyg-lib"
+version = "0.9.0+pt212cu126"
+source = { registry = "https://data.pyg.org/whl/torch-2.12.0+cu126.html" }
+wheels = [
+    { url = "https://data.pyg.org/whl/torch-2.12.0%2Bcu126/pyg_lib-0.9.0%2Bpt212cu126-cp310-abi3-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl" },
+    { url = "https://data.pyg.org/whl/torch-2.12.0%2Bcu126/pyg_lib-0.9.0%2Bpt212cu126-cp310-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl" },
+    { url = "https://data.pyg.org/whl/torch-2.12.0%2Bcu126/pyg_lib-0.9.0%2Bpt212cu126-cp310-abi3-win_amd64.whl" },
+]
+
+[[package]]
 name = "pygments"
 version = "2.20.0"
 source = { registry = "https://pypi.org/simple" }
@@ -2728,6 +2746,51 @@ wheels = [
     { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.12.0%2Bcu126-cp313-cp313t-manylinux_2_28_aarch64.whl", hash = "sha256:debd0815f6a2383c2a69cc2a40b4b3566ab339677f2a0cf8faff23daaa9ae03d", upload-time = "2026-05-12T23:34:19Z" },
     { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.12.0%2Bcu126-cp313-cp313t-manylinux_2_28_x86_64.whl", hash = "sha256:1719b4ed6cbe5ff750e5636b2625bade85caeea937436d8b235f5e49e471875d", upload-time = "2026-05-12T23:34:46Z" },
     { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.12.0%2Bcu126-cp313-cp313t-win_amd64.whl", hash = "sha256:13558cc2c4432c96deab6e5c4a8b3367d98a3ae5ec15123607529ff2f0f12ed3", upload-time = "2026-05-12T23:36:14Z" },
+]
+
+[[package]]
+name = "torch-geometric"
+version = "2.8.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "aiohttp" },
+    { name = "fsspec" },
+    { name = "jinja2" },
+    { name = "numpy" },
+    { name = "psutil" },
+    { name = "pyparsing" },
+    { name = "requests" },
+    { name = "tqdm" },
+    { name = "xxhash" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c1/d7/f754447893b8d275d479ffbce36e35d873b3df906eb380d810d239ffe66a/torch_geometric-2.8.1.tar.gz", hash = "sha256:3d4431567fcf4865a29cfec25c52484382dd38fd46a45fb4f9d473545d64b812", size = 929429, upload-time = "2026-10-12T11:47:39.023Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7c/24/486ae77b41d129b6a5035dd9f028141ec8d520c210a0c3fb803434f18b5f/torch_geometric-2.8.1-py3-none-any.whl", hash = "sha256:b628de243c0893f3435b6eca9a7bbc07f3219293ed27c974b8929aaae42e65d0", size = 1325471, upload-time = "2026-10-12T11:47:35.803Z" },
+]
+
+[[package]]
+name = "torch-scatter"
+version = "2.1.2+pt212cu126"
+source = { registry = "https://data.pyg.org/whl/torch-2.12.0+cu126.html" }
+wheels = [
+    { url = "https://data.pyg.org/whl/torch-2.12.0%2Bcu126/torch_scatter-2.1.2%2Bpt212cu126-cp312-cp312-linux_x86_64.whl" },
+    { url = "https://data.pyg.org/whl/torch-2.12.0%2Bcu126/torch_scatter-2.1.2%2Bpt212cu126-cp312-cp312-win_amd64.whl" },
+    { url = "https://data.pyg.org/whl/torch-2.12.0%2Bcu126/torch_scatter-2.1.2%2Bpt212cu126-cp313-cp313-linux_x86_64.whl" },
+    { url = "https://data.pyg.org/whl/torch-2.12.0%2Bcu126/torch_scatter-2.1.2%2Bpt212cu126-cp313-cp313-win_amd64.whl" },
+]
+
+[[package]]
+name = "torch-sparse"
+version = "0.6.18+pt212cu126"
+source = { registry = "https://data.pyg.org/whl/torch-2.12.0+cu126.html" }
+dependencies = [
+    { name = "scipy" },
+]
+wheels = [
+    { url = "https://data.pyg.org/whl/torch-2.12.0%2Bcu126/torch_sparse-0.6.18%2Bpt212cu126-cp312-cp312-linux_x86_64.whl" },
+    { url = "https://data.pyg.org/whl/torch-2.12.0%2Bcu126/torch_sparse-0.6.18%2Bpt212cu126-cp312-cp312-win_amd64.whl" },
+    { url = "https://data.pyg.org/whl/torch-2.12.0%2Bcu126/torch_sparse-0.6.18%2Bpt212cu126-cp313-cp313-linux_x86_64.whl" },
+    { url = "https://data.pyg.org/whl/torch-2.12.0%2Bcu126/torch_sparse-0.6.18%2Bpt212cu126-cp313-cp313-win_amd64.whl" },
 ]
 
 [[package]]
